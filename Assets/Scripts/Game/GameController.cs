@@ -1,24 +1,28 @@
-using UnityEngine;
+using System;
+using System.Diagnostics;
 
 namespace Game
 {
     public class GameController : Singleton<GameController>
     {
+        public TimeSpan CurrentLifetime { get; private set; }
+        public TimeSpan HighestLifetime { get; private set; }
+
+        private Stopwatch _stopwatch = new Stopwatch();
+        
         public void StartGame()
         {
-            
-        }
-        
-        // Start is called before the first frame update
-        void Start()
-        {
-        
+            CurrentLifetime = TimeSpan.Zero;
+            _stopwatch.Restart();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void GameOver()
         {
-        
+            _stopwatch.Stop();
+            CurrentLifetime = _stopwatch.Elapsed;
+            if (CurrentLifetime > HighestLifetime)
+                HighestLifetime = CurrentLifetime;
+            UiController.Instance.GameOver();
         }
     }
 }

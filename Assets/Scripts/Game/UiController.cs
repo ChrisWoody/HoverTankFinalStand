@@ -22,6 +22,7 @@ namespace Game
 
         private void Awake()
         {
+            Time.timeScale = 0f;
             _gameMenuCanvas.enabled = false;
             _gameOverCanvas.enabled = false;
             
@@ -34,6 +35,7 @@ namespace Game
 
         private void MainMenu()
         {
+            Time.timeScale = 0f;
             _mainMenuCanvas.enabled = true;
             _gameMenuCanvas.enabled = false;
             _gameOverCanvas.enabled = false;
@@ -41,6 +43,7 @@ namespace Game
         
         private void StartGame()
         {
+            Time.timeScale = 1f;
             _mainMenuCanvas.enabled = false;
             _gameMenuCanvas.enabled = true;
             _gameOverCanvas.enabled = false;
@@ -55,6 +58,7 @@ namespace Game
         
         public void GameOver()
         {
+            Time.timeScale = 0f;
             _mainMenuCanvas.enabled = false;
             _gameMenuCanvas.enabled = false;
             _gameOverCanvas.enabled = true;

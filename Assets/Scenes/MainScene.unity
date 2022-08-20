@@ -69492,7 +69492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &120979767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69644,14 +69644,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMenuCanvas: {fileID: 1716936480}
-  _startGameButton: {fileID: 1786777389}
   _gameMenuCanvas: {fileID: 760753059}
   _gameOverCanvas: {fileID: 359144283}
   _gameOverScore: {fileID: 1517973616}
   _gameOverHighscore: {fileID: 1061275153}
-  _playAgainButton: {fileID: 651209345}
-  _mainMenuButton: {fileID: 1336237941}
-  _gameOverButton: {fileID: 120979767}
+  _playerInput: {fileID: 1377050079}
 --- !u!1 &202391875
 GameObject:
   m_ObjectHideFlags: 0
@@ -69865,7 +69862,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.6463749, y: -0.000000026257611, z: 0.000000022243535, w: 0.76302004}
+  m_LocalRotation: {x: 0.6463749, y: 0.000000026257638, z: -0.000000022243555, w: 0.76302004}
   m_LocalPosition: {x: 0, y: 24.795, z: -5.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -70326,7 +70323,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &478672718
 MonoBehaviour:
@@ -70340,85 +70337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4dbfdec395b0c145bb06dc494b02dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &610605040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 610605043}
-  - component: {fileID: 610605042}
-  - component: {fileID: 610605044}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &610605042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610605040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1786777387}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &610605043
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610605040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &610605044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610605040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 4b78a47bb961bb043af810faea89546f,
-    type: 3}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: -6728393287135451377, guid: 4b78a47bb961bb043af810faea89546f,
-    type: 3}
-  m_SubmitAction: {fileID: 8046979607817222953, guid: 4b78a47bb961bb043af810faea89546f,
-    type: 3}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
 --- !u!1 &615042626
 GameObject:
   m_ObjectHideFlags: 0
@@ -70572,7 +70490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &651209342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70891,14 +70809,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894141492}
-  m_LocalRotation: {x: 0.6463749, y: -0.000000026257611, z: 0.000000022243535, w: 0.76302004}
+  m_LocalRotation: {x: 0.6463749, y: 0.000000026257638, z: -0.000000022243555, w: 0.76302004}
   m_LocalPosition: {x: 0, y: 24.795, z: -5.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1195611581}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910744737
 GameObject:
@@ -71418,7 +71336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1336237941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71555,7 +71473,7 @@ Transform:
   m_Children:
   - {fileID: 2092506090}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1377050078
 Rigidbody:
@@ -71645,14 +71563,78 @@ MonoBehaviour:
     m_ActionName: Player/ChangePreviousWeapon[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fe33be24-15d0-49f4-ac68-ea640966de12
+    m_ActionId: 982859a1-a54d-40e7-951e-eeaa11b6c6a2
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 4b35c6ea-108b-4071-aede-ede477ea9e9a
+    m_ActionId: f5314468-b781-4fa2-ade9-1a6a5f7ac2e4
     m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f34b316-4d33-4561-be33-da81fafb0fc0
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c652f427-452d-48be-a452-f3d9225b270d
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8c11f342-4865-446d-a539-15772a922226
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a6027681-6568-4f72-8ba2-a9177e7f786f
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d814064a-07a4-4d2a-a326-aa21ad6779cd
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 189bfc31-1270-458e-9211-4ae751d5d1e1
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 71689350-f089-4b63-8665-f6c4e642b4bf
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c1e1badb-d4be-43f5-98dc-600416439f01
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1377050080}
+        m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: TempStartGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e124e784-e9b3-48d3-ac5e-0158f0102744
+    m_ActionName: Player/TempStartGame[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1377050080}
+        m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: TempGameOver
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c0bb0dea-69c4-4065-9e63-1866802878e2
+    m_ActionName: Player/TempGameOver[/Keyboard/y]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: KeyboardMouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -72058,7 +72040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1786777388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -72168,7 +72150,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28080
+  m_Name: pb_Mesh28082
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

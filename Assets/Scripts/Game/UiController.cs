@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Game
@@ -8,17 +9,19 @@ namespace Game
     public class UiController : Singleton<UiController>
     {
         [SerializeField] private Canvas _mainMenuCanvas;
-        [SerializeField] private Button _startGameButton;
+        //[SerializeField] private Button _startGameButton;
 
         [SerializeField] private Canvas _gameMenuCanvas;
 
         [SerializeField] private Canvas _gameOverCanvas;
         [SerializeField] private TMP_Text _gameOverScore;
         [SerializeField] private TMP_Text _gameOverHighscore;
-        [SerializeField] private Button _playAgainButton;
-        [SerializeField] private Button _mainMenuButton;
+        //[SerializeField] private Button _playAgainButton;
+        //[SerializeField] private Button _mainMenuButton;
 
-        [SerializeField] private Button _gameOverButton;
+        //[SerializeField] private Button _gameOverButton;
+
+        [SerializeField] private PlayerInput _playerInput;
 
         private void Awake()
         {
@@ -26,11 +29,13 @@ namespace Game
             _gameMenuCanvas.enabled = false;
             _gameOverCanvas.enabled = false;
             
-            _startGameButton.onClick.AddListener(StartGame);
-            _playAgainButton.onClick.AddListener(StartGame);
-            _mainMenuButton.onClick.AddListener(MainMenu);
+            // _startGameButton.onClick.AddListener(StartGame);
+            // _playAgainButton.onClick.AddListener(StartGame);
+            // _mainMenuButton.onClick.AddListener(MainMenu);
+            //
+            // _gameOverButton.onClick.AddListener(DebugGameOver);
             
-            _gameOverButton.onClick.AddListener(DebugGameOver);
+            //_playerInput.SwitchCurrentActionMap("UI");
         }
 
         private void MainMenu()
@@ -39,25 +44,28 @@ namespace Game
             _mainMenuCanvas.enabled = true;
             _gameMenuCanvas.enabled = false;
             _gameOverCanvas.enabled = false;
+            //_playerInput.SwitchCurrentActionMap("UI");
         }
         
-        private void StartGame()
+        public void StartGame()
         {
             Time.timeScale = 1f;
             _mainMenuCanvas.enabled = false;
             _gameMenuCanvas.enabled = true;
             _gameOverCanvas.enabled = false;
+            //_playerInput.SwitchCurrentActionMap("Player");
             
             GameController.Instance.StartGame();
         }
 
-        private void DebugGameOver()
+        public void DebugGameOver()
         {
             GameController.Instance.GameOver();
         }
         
         public void GameOver()
         {
+            //_playerInput.SwitchCurrentActionMap("UI");
             Time.timeScale = 0f;
             _mainMenuCanvas.enabled = false;
             _gameMenuCanvas.enabled = false;

@@ -1,4 +1,5 @@
 using System;
+using Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,9 @@ namespace Player
 
         private void Update()
         {
+            if (!GameController.Instance.IsPlaying)
+                return;
+            
             var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out var hit, 50f))
             {
@@ -34,6 +38,9 @@ namespace Player
 
         private void LateUpdate()
         {
+            if (!GameController.Instance.IsPlaying)
+                return;
+            
             _rigidbody.velocity += _moveDir;
             _rigidbody.MoveRotation(_rigidbody.rotation * Quaternion.Euler(_lookDir * Time.fixedDeltaTime));
         }
@@ -47,6 +54,16 @@ namespace Player
         public void OnLook(InputAction.CallbackContext context)
         {
             // todo
+        }
+
+        public void TempStartGame(InputAction.CallbackContext context)
+        {
+            UiController.Instance.StartGame();
+        }
+
+        public void TempGameOver(InputAction.CallbackContext context)
+        {
+            UiController.Instance.DebugGameOver();
         }
     }
 }

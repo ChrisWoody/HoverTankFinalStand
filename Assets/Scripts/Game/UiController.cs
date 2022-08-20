@@ -12,6 +12,7 @@ namespace Game
         //[SerializeField] private Button _startGameButton;
 
         [SerializeField] private Canvas _gameMenuCanvas;
+        [SerializeField] private TMP_Text _gameMenuShieldsHealth;
 
         [SerializeField] private Canvas _gameOverCanvas;
         [SerializeField] private TMP_Text _gameOverScore;
@@ -73,6 +74,11 @@ namespace Game
 
             _gameOverScore.text = $"Score: {Math.Truncate(GameController.Instance.CurrentLifetime.TotalSeconds)}";
             _gameOverHighscore.text = $"Highscore: {Math.Truncate(GameController.Instance.HighestLifetime.TotalSeconds)}";
+        }
+
+        public void UpdateShieldHealth(int shields, int health)
+        {
+            _gameMenuShieldsHealth.text = $"Shields: {shields} Health: {health}";
         }
     }
 }

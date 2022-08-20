@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using Player;
 
 namespace Game
 {
@@ -16,6 +17,7 @@ namespace Game
         {
             IsPlaying = true;
             CurrentLifetime = TimeSpan.Zero;
+            PlayerHealth.Instance.Reset();
             _stopwatch.Restart();
         }
 

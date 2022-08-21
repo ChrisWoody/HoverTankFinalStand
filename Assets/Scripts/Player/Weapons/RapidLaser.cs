@@ -1,3 +1,4 @@
+using Enemy;
 using UnityEngine;
 
 namespace Player.Weapons
@@ -37,6 +38,8 @@ namespace Player.Weapons
             }
         }
 
+        public override string Name => "Rapid Laser";
+
         public override void ConstantFire()
         {
             if (!_canFire)
@@ -46,21 +49,16 @@ namespace Player.Weapons
             _elapsed = 0f;
             
             _rapidLaserFlash.Flash();
-            _rapidLaserTrail.Fire(transform.position, transform.position + (transform.forward * 100f));
-            // if (Physics.Raycast(BolterPoint.position, BolterPoint.forward, out var hit, 100f, _enemyLayerMask))
-            // {
-            //     //hit.transform.GetComponent<EnemyBase>().Hit(1);
-            //     
-            //     //var bolterImpact = Instantiate(BolterImpact);
-            //     //bolterImpact.position = hit.point;
-            //     
-            //     //var bolterExplosion = Instantiate(BolterExplosion);
-            //     //bolterExplosion.position = hit.point;
-            //     //Destroy(bolterExplosion.gameObject, 1f);
-            //     
-            //     //var bolterTrail = Instantiate(BolterTrail);
-            //     //bolterTrail.Fire(BolterPoint.position, hit.point);
-            // }
+            if (Physics.Raycast(transform.position, transform.forward, out var hit, 100f, _enemyLayerMask))
+            {
+                 hit.transform.GetComponent<EnemyBase>().Hit(1);
+                 
+                 _rapidLaserTrail.Fire(transform.position, hit.point);
+            }
+            else
+            {
+                _rapidLaserTrail.Fire(transform.position, transform.position + (transform.forward * 100f));
+            }
         }
     }
 }

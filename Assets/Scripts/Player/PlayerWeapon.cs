@@ -1,3 +1,4 @@
+using Game;
 using Player.Weapons;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,10 +18,14 @@ namespace Player
         private void Awake()
         {
             _weapons = GetComponents<WeaponBase>();
+            UiController.Instance.UpdateSelectedWeapon(_weapons[_currentWeapon].Name);
         }
 
         private void Update()
         {
+            if (!GameController.Instance.IsPlaying)
+                return;
+            
             if (_fire)
             {
                 if (_started)
@@ -43,6 +48,9 @@ namespace Player
         
         public void OnFire(InputAction.CallbackContext context)
         {
+            if (!GameController.Instance.IsPlaying)
+                return;
+            
             if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
             {
                 _started = true;
@@ -56,16 +64,26 @@ namespace Player
 
         public void OnChangeNextWeapon(InputAction.CallbackContext context)
         {
+            if (!GameController.Instance.IsPlaying)
+                return;
+            
             _currentWeapon++;
             if (_currentWeapon >= _weapons.Length)
                 _currentWeapon = 0;
+
+            UiController.Instance.UpdateSelectedWeapon(_weapons[_currentWeapon].Name);
         }
 
         public void OnChangePreviousWeapon(InputAction.CallbackContext context)
         {
+            if (!GameController.Instance.IsPlaying)
+                return;
+            
             _currentWeapon--;
             if (_currentWeapon < 0)
                 _currentWeapon = _weapons.Length - 1;
+
+            UiController.Instance.UpdateSelectedWeapon(_weapons[_currentWeapon].Name);
         }
     }
 }

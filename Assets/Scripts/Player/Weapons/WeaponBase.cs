@@ -4,6 +4,8 @@ namespace Player.Weapons
 {
     public abstract class WeaponBase : MonoBehaviour
     {
+        public abstract string Name { get; }
+    
         public virtual void StartFire()
         {
         }

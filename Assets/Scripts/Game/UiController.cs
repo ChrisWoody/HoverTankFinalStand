@@ -13,6 +13,7 @@ namespace Game
 
         [SerializeField] private Canvas _gameMenuCanvas;
         [SerializeField] private TMP_Text _gameMenuShieldsHealth;
+        [SerializeField] private TMP_Text _gameMenuSelectedWeapon;
 
         [SerializeField] private Canvas _gameOverCanvas;
         [SerializeField] private TMP_Text _gameOverScore;
@@ -79,6 +80,11 @@ namespace Game
         public void UpdateShieldHealth(int shields, int health)
         {
             _gameMenuShieldsHealth.text = $"Shields: {shields} Health: {health}";
+        }
+
+        public void UpdateSelectedWeapon(string weaponName)
+        {
+            _gameMenuSelectedWeapon.text = $"Weapon: {weaponName}";
         }
     }
 }

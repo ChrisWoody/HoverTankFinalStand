@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : Singleton<PlayerMovement>
     {
         private Rigidbody _rigidbody;
         private Vector3 _moveDir;

@@ -5,6 +5,8 @@ namespace Player.Weapons
 {
     public class RapidLaser : WeaponBase
     {
+        public Transform RapidLaserImpact;
+    
         //public Transform BolterPoint;
         //public Transform BolterImpact;
         //public Transform BolterExplosion;
@@ -54,6 +56,10 @@ namespace Player.Weapons
                  hit.transform.GetComponent<EnemyBase>().Hit(1);
                  
                  _rapidLaserTrail.Fire(transform.position, hit.point);
+                 var impact = Instantiate(RapidLaserImpact);
+                 impact.position = hit.point;
+                 impact.forward = -transform.forward;
+                 Destroy(impact.gameObject, 1f);
             }
             else
             {

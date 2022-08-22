@@ -12,6 +12,7 @@ namespace Player
         private bool _fire;
         private bool _started;
         private bool _finished;
+        private bool _canShootAfterChangingWeapon;
         
         private int _currentWeapon;
         
@@ -24,6 +25,9 @@ namespace Player
         private void Update()
         {
             if (!GameController.Instance.IsPlaying)
+                return;
+            
+            if (!_canShootAfterChangingWeapon)
                 return;
             
             if (_fire)
@@ -55,6 +59,7 @@ namespace Player
             {
                 _started = true;
                 _fire = true;
+                _canShootAfterChangingWeapon = true;
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
@@ -66,6 +71,8 @@ namespace Player
         {
             if (!GameController.Instance.IsPlaying)
                 return;
+            
+            _canShootAfterChangingWeapon = false;
             
             _currentWeapon++;
             if (_currentWeapon >= _weapons.Length)
@@ -79,6 +86,8 @@ namespace Player
             if (!GameController.Instance.IsPlaying)
                 return;
             
+            _canShootAfterChangingWeapon = false;
+
             _currentWeapon--;
             if (_currentWeapon < 0)
                 _currentWeapon = _weapons.Length - 1;

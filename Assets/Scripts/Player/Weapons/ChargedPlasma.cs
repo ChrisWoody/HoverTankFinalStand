@@ -8,7 +8,7 @@ namespace Player.Weapons
         
         private bool _charging;
         private float _chargingElapsed;
-        private const float ChargingTimeout = 5f; 
+        private const float ChargingTimeout = 4f; 
 
         private bool _coolingDown;
         private float _coolingDownElapsed;
@@ -17,7 +17,7 @@ namespace Player.Weapons
         private bool _cancellingCharge;
         private float _cancellingChargeElapsed;
         private const float CancellingChargeTimeout = ChargingTimeout;
-    
+
         private void Update()
         {
             if (_charging)
@@ -69,6 +69,9 @@ namespace Player.Weapons
             if (_cancellingCharge || _coolingDown)
                 return;
 
+            if (!_chargedPlasmaBall.CanFire())
+                return;
+
             _charging = true;
             _chargingElapsed = 0f;
         }
@@ -76,6 +79,9 @@ namespace Player.Weapons
         public override void EndFire()
         {
             if (_cancellingCharge || _coolingDown)
+                return;
+
+            if (!_chargedPlasmaBall.CanFire())
                 return;
 
             if (_charging)
@@ -87,11 +93,6 @@ namespace Player.Weapons
             }
         }
 
-        // can check the other project how it was done, but player needs to charge weapon before it is fired
-        // could have it fire as soon as its charged. Can also spawn the ball as charging is started, increasing its size and the light intestity up until its fully charged
-        // this is cool actually as helps indicate that its charging. Also if they stop charging it can decrease, though unsure how that impacts swapping to other weapons
-        // yeah swapping away or stop charging will cause the charged ball to descrease in size/light intesity but very quickly (not related to how long they were charging for)
-
-        public override string Name => "Charged Plasma";
+        public override string Name => $"Charged Plasma: {_charging} {_cancellingCharge} {_coolingDown} {_chargedPlasmaBall.CanFire()}";
     }
 }

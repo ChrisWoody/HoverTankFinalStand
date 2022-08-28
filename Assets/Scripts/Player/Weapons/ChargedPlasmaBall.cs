@@ -4,16 +4,21 @@ namespace Player.Weapons
 {
     public class ChargedPlasmaBall : MonoBehaviour
     {
+        [SerializeField] private ChargedPlasmaExplosion _chargedPlasmaExplosion;
+
         private Vector3 _initialScale;
         private Light _light;
         private float _initialLightIntensity;
         
-        private const float Lifetime = 30f;
+        private const float Lifetime = 5f;
         private float _elapsed;
 
         private bool _fired;
 
         private Rigidbody _rb;
+        private int _enemyLayerMask;
+
+        private readonly Collider[] _enemiesHit = new Collider[50];  
 
         private void Awake()
         {
@@ -24,6 +29,7 @@ namespace Player.Weapons
 
             transform.localScale = Vector3.zero;
             _light.intensity = 0f;
+            _enemyLayerMask = LayerMask.GetMask("Enemy");
         }
 
         private void Update()
@@ -34,11 +40,7 @@ namespace Player.Weapons
             _elapsed += Time.deltaTime;
             if (_elapsed >= Lifetime)
             {
-                transform.localScale = Vector3.zero;
-                _light.intensity = 0f;
-                _fired = false;
-
-                // show explosion and damage enemies
+                Explode();
             }
         }
 
@@ -54,12 +56,28 @@ namespace Player.Weapons
         {
             if (!_fired)
                 return;
-            
-            // assume enemy because of configured layers
-            // show explosion and damage enemies
-            
+
+            Explode();
+        }
+
+        private void Explode()
+        {
             transform.localScale = Vector3.zero;
             _light.intensity = 0f;
+            _fired = false;
+            _elapsed = 0f;
+
+            _chargedPlasmaExplosion.Explode(transform.position);
+            
+            var size = Physics.OverlapSphereNonAlloc(transform.position, 5f, _enemiesHit, _enemyLayerMask);
+            if (size == 0)
+                return;
+
+            for (var i = 0; i < size; i++)
+            {
+                Debug.Log("hit enemy");
+                _enemiesHit[i].SendMessage("Hit", 10);
+            }
         }
 
         public void ScaleAndSetBall(Vector3 pos, Vector3 dir, float scale)
@@ -77,6 +95,12 @@ namespace Player.Weapons
         public void Fire()
         {
             _fired = true;
+            _elapsed = 0f;
+        }
+
+        public bool CanFire()
+        {
+            return !_fired;
         }
     }
 }

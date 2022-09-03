@@ -10,7 +10,7 @@ namespace Player.Weapons
         private Material _material;
 
         private float _elapsed;
-        private const float Timeout = 2f;
+        private const float Timeout = 3f;
 
         private Light _light;
         private float _initialLightIntensity;
@@ -49,7 +49,7 @@ namespace Player.Weapons
 
             var scale = _elapsed / Timeout;
 
-            _material.SetFloat("_distance", _sizeCurve.Evaluate(scale) * 5f);
+            _material.SetFloat("_distance", _sizeCurve.Evaluate(scale) * 10f);
             _material.SetFloat("_fadeoutval", _fadeOutCurve.Evaluate(scale));
             if (scale >= 0.5f)
             {

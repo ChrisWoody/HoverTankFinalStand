@@ -69,7 +69,7 @@ namespace Player.Weapons
 
             _chargedPlasmaExplosion.Explode(transform.position);
             
-            var size = Physics.OverlapSphereNonAlloc(transform.position, 5f, _enemiesHit, _enemyLayerMask);
+            var size = Physics.OverlapSphereNonAlloc(transform.position, 10f, _enemiesHit, _enemyLayerMask);
             if (size == 0)
                 return;
 

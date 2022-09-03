@@ -26,7 +26,7 @@ namespace Player
         {
             if (!GameController.Instance.IsPlaying)
                 return;
-            
+
             if (!_canShootAfterChangingWeapon)
                 return;
             
@@ -48,6 +48,8 @@ namespace Player
                     _weapons[_currentWeapon].ConstantFire();                    
                 }
             }
+
+            UiController.Instance.UpdateSelectedWeapon(_weapons[_currentWeapon].Name);
         }
         
         public void OnFire(InputAction.CallbackContext context)

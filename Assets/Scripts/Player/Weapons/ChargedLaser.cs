@@ -1,4 +1,4 @@
-using System;
+using Enemy;
 using UnityEngine;
 
 namespace Player.Weapons
@@ -6,7 +6,7 @@ namespace Player.Weapons
     public class ChargedLaser : WeaponBase
     {
         [SerializeField] private ChargedLaserLaser _chargedLaserLaser;
-        
+
         private float _chargingElapsed;
         private const float ChargingTimeout = 4f; 
 
@@ -15,6 +15,9 @@ namespace Player.Weapons
 
         private float _firingElapsed;
         private const float FiringTimeout = 5f;
+
+        private float _damagedCooldownElapsed;
+        private const float DamageCooldownTimeout = 0.1f;
 
         private float _cancellingChargeElapsed;
         private const float CancellingChargeTimeout = ChargingTimeout;
@@ -40,15 +43,6 @@ namespace Player.Weapons
                         _chargingElapsed = 0f;
                         _state = State.Firing;
                         _firingElapsed = 0f;
-
-
-                        //_chargedPlasmaBall.ScaleAndSetBall(transform.position, transform.forward, 1f);
-                        //_chargedPlasmaBall.Fire();
-                    }
-                    else
-                    {
-                        //var scale = _chargingElapsed / ChargingTimeout;
-                        //_chargedPlasmaBall.ScaleAndSetBall(transform.position, transform.forward, scale);
                     }
                     break;
                 case State.CoolingDown:
@@ -66,13 +60,24 @@ namespace Player.Weapons
                         _firingElapsed = 0f;
                         _state = State.CoolingDown;
                         _coolingDownElapsed = 0f;
+                        _damagedCooldownElapsed = 0f;
                         _chargedLaserLaser.StopFiring();
                     }
                     else
                     {
+                        _damagedCooldownElapsed += Time.deltaTime;
                         var end = transform.position + (transform.forward * 50f);
                         if (Physics.Raycast(transform.position, transform.forward, out var hit, 100f, _enemyLayerMask))
+                        {
                             end = hit.point;
+
+                            // If we've hit an enemy, and our non-framerate dependant damage is ready, hit it
+                            if (_damagedCooldownElapsed >= DamageCooldownTimeout)
+                            {
+                                _damagedCooldownElapsed = 0f;
+                                hit.transform.GetComponent<EnemyBase>().Hit(1);
+                            }
+                        }
 
                         _chargedLaserLaser.Fire(transform.position, end, transform.forward);
                     }
@@ -83,11 +88,6 @@ namespace Player.Weapons
                     {
                         _cancellingChargeElapsed = 0f;
                         _state = State.Idle;
-                    }
-                    else
-                    {
-                        //var scale = _cancellingChargeElapsed / CancellingChargeTimeout;
-                        //_chargedPlasmaBall.ScaleAndSetBall(transform.position, transform.forward, scale);
                     }
                     break;
             }

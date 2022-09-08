@@ -75,7 +75,7 @@ namespace Player.Weapons
                             if (_damagedCooldownElapsed >= DamageCooldownTimeout)
                             {
                                 _damagedCooldownElapsed = 0f;
-                                hit.transform.GetComponent<EnemyBase>().Hit(1);
+                                hit.transform.GetComponent<EnemyBase>().Hit(3, WeaponType.ChargedLaser, hit.point);
                             }
                         }
 

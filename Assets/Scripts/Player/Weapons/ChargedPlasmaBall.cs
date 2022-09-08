@@ -1,3 +1,4 @@
+using Enemy;
 using UnityEngine;
 
 namespace Player.Weapons
@@ -75,8 +76,7 @@ namespace Player.Weapons
 
             for (var i = 0; i < size; i++)
             {
-                Debug.Log("hit enemy");
-                _enemiesHit[i].SendMessage("Hit", 10);
+                _enemiesHit[i].GetComponent<EnemyBase>().Hit(10, WeaponType.ChargedPlasma, transform.position);
             }
         }
 

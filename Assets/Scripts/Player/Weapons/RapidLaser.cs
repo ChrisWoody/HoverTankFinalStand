@@ -54,7 +54,7 @@ namespace Player.Weapons
             var transform1 = transform;
             if (Physics.Raycast(transform1.position, transform1.forward, out var hit, 100f, _enemyLayerMask))
             {
-                 hit.transform.GetComponent<EnemyBase>().Hit(1);
+                 hit.transform.GetComponent<EnemyBase>().Hit(1, WeaponType.RapidLaser, hit.point);
                  
                  _rapidLaserTrail.Fire(transform1.position, hit.point);
                  var impact = Instantiate(RapidLaserImpact);

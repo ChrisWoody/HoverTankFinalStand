@@ -1,4 +1,7 @@
-﻿using Game;
+﻿using Enemy;
+using Game;
+using Player.Weapons;
+using UnityEngine;
 
 namespace Player
 {
@@ -14,15 +17,17 @@ namespace Player
             UiController.Instance.UpdateShieldHealth(_shields, _health);
         }
 
-        public void Hit()
+        private void ApplyDamage(int damage)
         {
-            if (_shields > 0)
+            if (_shields - damage > 0)
             {
-                _shields--;
+                _shields -= damage;
             }
-            else if (_health > 0)
+            else
             {
-                _health--;
+                var diff = damage - _shields;
+                _health -= diff;
+                _shields = 0;
             }
 
             if (_health <= 0)
@@ -32,6 +37,16 @@ namespace Player
             else
             {
                 UiController.Instance.UpdateShieldHealth(_shields, _health);
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.tag == "Enemy") // or enemy weapon later
+            {
+                var enemyBase = collision.transform.GetComponent<EnemyBase>();
+                ApplyDamage(enemyBase.PlayerDamageToApply);
+                enemyBase.Hit(100, WeaponType.PlayerCollision, transform.position);
             }
         }
     }

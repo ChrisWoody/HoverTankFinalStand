@@ -69467,8 +69467,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23313736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -250, y: 0, z: -250}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalPosition: {x: -188, y: 0, z: -188}
+  m_LocalScale: {x: 75, y: 1, z: 75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -70364,7 +70364,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.6463749, y: 0.000000026257638, z: -0.000000022243555, w: 0.76302004}
+  m_LocalRotation: {x: 0.6463749, y: -0.000000026257611, z: 0.000000022243535, w: 0.76302004}
   m_LocalPosition: {x: 0, y: 24.795, z: -5.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -71223,7 +71223,7 @@ GameObject:
   - component: {fileID: 655972275}
   - component: {fileID: 655972274}
   - component: {fileID: 655972276}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RapidLaserFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71576,7 +71576,7 @@ GameObject:
   - component: {fileID: 849140614}
   - component: {fileID: 849140616}
   - component: {fileID: 849140617}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71716,7 +71716,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894141492}
-  m_LocalRotation: {x: 0.6463749, y: 0.000000026257638, z: -0.000000022243555, w: 0.76302004}
+  m_LocalRotation: {x: 0.6463749, y: -0.000000026257611, z: 0.000000022243535, w: 0.76302004}
   m_LocalPosition: {x: 0, y: 24.795, z: -5.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72835,7 +72835,7 @@ GameObject:
   - component: {fileID: 1377050078}
   - component: {fileID: 1377050080}
   - component: {fileID: 1377050081}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -73608,7 +73608,7 @@ GameObject:
   - component: {fileID: 1711925443}
   - component: {fileID: 1711925445}
   - component: {fileID: 1711925444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RapidLaserTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73975,7 +73975,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28114
+  m_Name: pb_Mesh28118
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -74423,7 +74423,7 @@ GameObject:
   - component: {fileID: 2025712272}
   - component: {fileID: 2025712271}
   - component: {fileID: 2025712270}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74520,7 +74520,7 @@ GameObject:
   - component: {fileID: 2092506093}
   - component: {fileID: 2092506092}
   - component: {fileID: 2092506091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using Enemy;
 using Player;
 
 namespace Game
@@ -11,6 +12,8 @@ namespace Game
 
         public bool IsPlaying { get; private set; }
 
+        public int EnemiesKilled { get; private set; }
+
         private Stopwatch _stopwatch = new Stopwatch();
         
         public void StartGame()
@@ -18,6 +21,9 @@ namespace Game
             IsPlaying = true;
             CurrentLifetime = TimeSpan.Zero;
             PlayerHealth.Instance.Reset();
+            EnemySpawner.Instance.StartGame();
+            EnemiesKilled = 0;
+            UiController.Instance.UpdateEnemiesKilled(EnemiesKilled);
             _stopwatch.Restart();
         }
 
@@ -29,6 +35,13 @@ namespace Game
             if (CurrentLifetime > HighestLifetime)
                 HighestLifetime = CurrentLifetime;
             UiController.Instance.GameOver();
+            EnemySpawner.Instance.GameOver();
+        }
+
+        public void EnemyKilled()
+        {
+            EnemiesKilled++;
+            UiController.Instance.UpdateEnemiesKilled(EnemiesKilled);
         }
     }
 }

@@ -1,8 +1,6 @@
-using System;
 using Game;
 using Player.Weapons;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Enemy
 {
@@ -17,7 +15,7 @@ namespace Enemy
 
         protected override void OnAwake()
         {
-            _speed = Random.value * 2f + 4f;
+            _speed = Random.value * 2f + 7f;
         }
 
         protected override void OnDeath(WeaponType weaponType, Vector3 hitPosition)
@@ -32,6 +30,9 @@ namespace Enemy
         private void Update()
         {
             if (!GameController.Instance.IsPlaying)
+                return;
+
+            if (Heath <= 0 || !Alive)
                 return;
 
             var playerPos = Player.PlayerMovement.Instance.transform.position;

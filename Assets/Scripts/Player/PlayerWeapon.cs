@@ -48,7 +48,6 @@ namespace Player
                     _weapons[_currentWeapon].ConstantFire();                    
                 }
             }
-
             UiController.Instance.UpdateSelectedWeapon(_weapons[_currentWeapon].Name);
         }
         
@@ -62,6 +61,7 @@ namespace Player
                 _started = true;
                 _fire = true;
                 _canShootAfterChangingWeapon = true;
+                _finished = false;
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
@@ -73,8 +73,14 @@ namespace Player
         {
             if (!GameController.Instance.IsPlaying)
                 return;
-            
+
+            if (context.phase != InputActionPhase.Started && context.phase != InputActionPhase.Performed)
+                return;
+
             _canShootAfterChangingWeapon = false;
+            _finished = false;
+            _fire = false;
+            _weapons[_currentWeapon].EndFire();
             
             _currentWeapon++;
             if (_currentWeapon >= _weapons.Length)
@@ -87,8 +93,14 @@ namespace Player
         {
             if (!GameController.Instance.IsPlaying)
                 return;
-            
+
+            if (context.phase != InputActionPhase.Started && context.phase != InputActionPhase.Performed)
+                return;
+
             _canShootAfterChangingWeapon = false;
+            _finished = false;
+            _fire = false;
+            _weapons[_currentWeapon].EndFire();
 
             _currentWeapon--;
             if (_currentWeapon < 0)

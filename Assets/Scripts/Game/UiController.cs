@@ -14,6 +14,7 @@ namespace Game
         [SerializeField] private Canvas _gameMenuCanvas;
         [SerializeField] private TMP_Text _gameMenuShieldsHealth;
         [SerializeField] private TMP_Text _gameMenuSelectedWeapon;
+        [SerializeField] private TMP_Text _gameMenuEnemiesKilled;
 
         [SerializeField] private Canvas _gameOverCanvas;
         [SerializeField] private TMP_Text _gameOverScore;
@@ -85,6 +86,11 @@ namespace Game
         public void UpdateSelectedWeapon(string weaponName)
         {
             _gameMenuSelectedWeapon.text = $"Weapon: {weaponName}";
+        }
+
+        public void UpdateEnemiesKilled(int enemiesKilled)
+        {
+            _gameMenuEnemiesKilled.text = $"Enemies killed: {enemiesKilled}";
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Game;
 using Player.Weapons;
 using UnityEngine;
 
@@ -6,29 +7,44 @@ namespace Enemy
 {
     public abstract class EnemyBase : MonoBehaviour
     {
-        private int _health;
-
+        protected int Heath { get; private set; }
         protected abstract int InitialHealth { get; }
+        public bool Alive { get; private set; }
         public abstract int PlayerDamageToApply { get; }
 
         protected virtual void OnAwake() {}
 
         private void Awake()
         {
-            _health = InitialHealth;
+            ResetForGame();
             OnAwake();
         }
 
         public void Hit(int damage, WeaponType weaponType, Vector3 hitPosition)
         {
-            _health -= damage;
-            if (_health <= 0)
+            if (Heath <= 0 || !Alive)
+                return;
+
+            Heath -= damage;
+            if (Heath <= 0)
             {
-                _health = 0;
-                // kill enemy/return to pool
                 OnDeath(weaponType, hitPosition);
-                Destroy(gameObject);
+                ResetForGame();
+                GameController.Instance.EnemyKilled();
             }
+        }
+
+        public void Spawn()
+        {
+            Heath = InitialHealth;
+            Alive = true;
+        }
+
+        public void ResetForGame()
+        {
+            Alive = false;
+            Heath = 0;
+            transform.position = Vector3.down * 20f;
         }
 
         protected abstract void OnDeath(WeaponType weaponType, Vector3 hitPosition);

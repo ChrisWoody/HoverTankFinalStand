@@ -30,8 +30,8 @@ namespace Player
                 targetPosition.y = transform.position.y;
                 var targetDirection = (targetPosition - transform.position).normalized;
                 var dot = Vector3.Dot(targetDirection, transform.right);
-                var dir = dot < -0.05f ? -1f : dot > 0.05f ? 1f : 0f;
-                _lookDir = new Vector3(0f, dir * 20f, 0f);
+                var dir = dot < -0.02f ? -1f : dot > 0.02f ? 1f : 0f;
+                _lookDir = new Vector3(0f, dir * 40f, 0f);
             }
         }
 

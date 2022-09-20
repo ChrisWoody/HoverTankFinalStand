@@ -76,6 +76,9 @@ namespace Player.Weapons
 
             for (var i = 0; i < size; i++)
             {
+                if (_enemiesHit[i] == null || _enemiesHit[i].GetComponent<EnemyBase>() == null)
+                    continue;
+
                 _enemiesHit[i].GetComponent<EnemyBase>().Hit(10, WeaponType.ChargedPlasma, transform.position);
             }
         }

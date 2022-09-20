@@ -48,6 +48,11 @@ namespace Player
                 ApplyDamage(enemyBase.PlayerDamageToApply);
                 enemyBase.Hit(100, WeaponType.PlayerCollision, transform.position);
             }
+            else if (collision.transform.tag == "MediumEnemyShot")
+            {
+                ApplyDamage(1);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

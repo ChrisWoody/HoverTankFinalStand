@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using Enemy;
 using Player;
+using UnityEngine;
 
 namespace Game
 {
@@ -24,6 +25,12 @@ namespace Game
             EnemySpawner.Instance.StartGame();
             EnemiesKilled = 0;
             UiController.Instance.UpdateEnemiesKilled(EnemiesKilled);
+            foreach (var mediumEnemyShot in FindObjectsOfType<MediumEnemyShot>())
+            {
+                Destroy(mediumEnemyShot);
+            }
+
+            PlayerMovement.Instance.transform.position = new Vector3(0f, 0.8f, 0f);
             _stopwatch.Restart();
         }
 

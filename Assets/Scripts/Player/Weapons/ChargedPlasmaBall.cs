@@ -11,7 +11,7 @@ namespace Player.Weapons
         private Light _light;
         private float _initialLightIntensity;
         
-        private const float Lifetime = 5f;
+        private const float Lifetime = 10f;
         private float _elapsed;
 
         private bool _fired;

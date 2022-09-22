@@ -53,6 +53,10 @@ namespace Player
                 ApplyDamage(1);
                 Destroy(collision.gameObject);
             }
+            else if (collision.transform.tag == "Boundary")
+            {
+                ApplyDamage(100);
+            }
         }
     }
 }

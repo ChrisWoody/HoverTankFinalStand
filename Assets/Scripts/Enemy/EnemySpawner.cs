@@ -31,16 +31,16 @@ namespace Enemy
             if (_elapsed >= Spawnrate)
             {
                 _elapsed = 0f;
-                // foreach (var smallEnemy in _smallEnemies)
-                // {
-                //     if (!smallEnemy.Alive)
-                //     {
-                //         var spawnPosition = GetSpawnPosition();
-                //         smallEnemy.transform.position = spawnPosition;
-                //         smallEnemy.Spawn();
-                //         break;
-                //     }
-                // }
+                foreach (var smallEnemy in _smallEnemies)
+                {
+                    if (!smallEnemy.Alive)
+                    {
+                        var spawnPosition = GetSpawnPosition();
+                        smallEnemy.transform.position = spawnPosition;
+                        smallEnemy.Spawn();
+                        break;
+                    }
+                }
 
                 foreach (var mediumEnemy in _mediumEnemies)
                 {
@@ -60,7 +60,7 @@ namespace Enemy
             float x;
             float z;
 
-            const float f = 125f;
+            const float f = 170f;
             if (Random.value > 0.5f)
             {
                 if (Random.value > 0.5f)

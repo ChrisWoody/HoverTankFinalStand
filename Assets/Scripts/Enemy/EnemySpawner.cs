@@ -11,15 +11,16 @@ namespace Enemy
         private EnemyBase[] _smallEnemies;
         private EnemyBase[] _mediumEnemies;
 
+        private float _gameElapsed;
         private float _elapsed;
-        private const float Spawnrate = 2f;
-        
+        private float _spawnrate;
+
         private bool _playing;
 
         private void Awake()
         {
-            _smallEnemies = Enumerable.Range(0, 20).Select(x => Instantiate(_smallEnemyPrefab)).ToArray();
-            _mediumEnemies = Enumerable.Range(0, 20).Select(x => Instantiate(_mediumEnemyPrefab)).ToArray();
+            _smallEnemies = Enumerable.Range(0, 40).Select(x => Instantiate(_smallEnemyPrefab)).ToArray();
+            _mediumEnemies = Enumerable.Range(0, 30).Select(x => Instantiate(_mediumEnemyPrefab)).ToArray();
         }
 
         private void Update()
@@ -27,8 +28,18 @@ namespace Enemy
             if (!_playing)
                 return;
 
+            _gameElapsed += Time.deltaTime;
+            if (_gameElapsed > 60f)
+            {
+                _spawnrate = 2f;
+            }
+            else if (_gameElapsed > 120f)
+            {
+                _spawnrate = 1f;
+            }
+
             _elapsed += Time.deltaTime;
-            if (_elapsed >= Spawnrate)
+            if (_elapsed >= _spawnrate)
             {
                 _elapsed = 0f;
                 foreach (var smallEnemy in _smallEnemies)
@@ -95,6 +106,7 @@ namespace Enemy
         {
             _playing = true;
             _elapsed = 0f;
+            _spawnrate = 3f;
 
             foreach (var smallEnemy in _smallEnemies)
             {

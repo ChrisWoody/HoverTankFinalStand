@@ -63,7 +63,7 @@ namespace Player
 
         public void TempGameOver(InputAction.CallbackContext context)
         {
-            UiController.Instance.DebugGameOver();
+            //UiController.Instance.DebugGameOver();
         }
     }
 }

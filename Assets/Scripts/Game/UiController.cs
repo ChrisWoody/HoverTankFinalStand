@@ -52,6 +52,9 @@ namespace Game
         
         public void StartGame()
         {
+            if (GameController.Instance.IsPlaying)
+                return;
+
             Time.timeScale = 1f;
             _mainMenuCanvas.enabled = false;
             _gameMenuCanvas.enabled = true;

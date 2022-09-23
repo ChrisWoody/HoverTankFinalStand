@@ -112,7 +112,7 @@ namespace Player.Weapons
             _chargingElapsed = 0f;
         }
         
-        public override string Name => $"Charged Laser, {_state}";
+        public override string Name => $"Charged Laser ({_state})";
 
         private enum State
         {

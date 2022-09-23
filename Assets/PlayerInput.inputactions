@@ -182,17 +182,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e5ea98d5-4653-4125-b5b7-e236cf9c7a37",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "69244e08-14a2-44a5-ba56-635fe8e447c8",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -238,7 +227,7 @@
                 {
                     "name": "",
                     "id": "422a42c8-9b3c-420e-a0a9-eff8843c870e",
-                    "path": "<Keyboard>/t",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",

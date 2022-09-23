@@ -23,7 +23,6 @@ namespace Enemy
             var death = Instantiate(_death);
             death.transform.position = transform.position;
             death.transform.forward = transform.forward;
-            //death.Die(transform.position + -(transform.forward * 0.5f), 100f);
             death.Die(weaponType, hitPosition);
         }
 

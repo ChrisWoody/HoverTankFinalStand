@@ -8,7 +8,8 @@ namespace Enemy
     {
         [SerializeField] private Transform _weaponPosition;
         [SerializeField] private MediumEnemyShot _mediumEnemyShot;
-        
+        [SerializeField] private SmallEnemyDeath _death;
+
         private float _firedElapsed;
         private float _firedCooldown;
         
@@ -54,7 +55,10 @@ namespace Enemy
         public override int PlayerDamageToApply => 5;
         protected override void OnDeath(WeaponType weaponType, Vector3 hitPosition)
         {
-
+            var death = Instantiate(_death);
+            death.transform.position = transform.position;
+            death.transform.forward = transform.forward;
+            death.Die(weaponType, hitPosition);
         }
     }
 }

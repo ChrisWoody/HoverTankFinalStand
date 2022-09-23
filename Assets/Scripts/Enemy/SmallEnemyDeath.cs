@@ -16,7 +16,7 @@ namespace Enemy
         private void Awake()
         {
             _rigidbodies = GetComponentsInChildren<Rigidbody>();
-            _originalScale = _rigidbodies[0].transform.localScale;
+            _originalScale = new Vector3(100f, 100f, 100f);
         }
 
         private void Update()

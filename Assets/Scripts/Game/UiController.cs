@@ -15,6 +15,7 @@ namespace Game
         [SerializeField] private TMP_Text _gameMenuShieldsHealth;
         [SerializeField] private TMP_Text _gameMenuSelectedWeapon;
         [SerializeField] private TMP_Text _gameMenuEnemiesKilled;
+        [SerializeField] private TMP_Text _gameMenuGameTimeScore;
 
         [SerializeField] private Canvas _gameOverCanvas;
         [SerializeField] private TMP_Text _gameOverScore;
@@ -81,6 +82,11 @@ namespace Game
             _gameOverHighscore.text = $"Highscore: {Math.Truncate(GameController.Instance.HighestLifetime.TotalSeconds)}";
         }
 
+        private void Update()
+        {
+            _gameMenuGameTimeScore.text = $"Score: {Math.Truncate(GameController.Instance.CurrentLifetime.TotalSeconds)}";
+        }
+
         public void UpdateShieldHealth(int shields, int health)
         {
             _gameMenuShieldsHealth.text = $"Shields: {shields} Health: {health}";
@@ -88,7 +94,7 @@ namespace Game
 
         public void UpdateSelectedWeapon(string weaponName)
         {
-            _gameMenuSelectedWeapon.text = $"Weapon: {weaponName}";
+            _gameMenuSelectedWeapon.text = $"Weapon (Q/E): {weaponName}";
         }
 
         public void UpdateEnemiesKilled(int enemiesKilled)

@@ -66,36 +66,35 @@ namespace Enemy
             }
         }
 
-        private static Vector3 GetSpawnPosition()
+        private static Vector3 GetSpawnPosition(float distance = 170f)
         {
             float x;
             float z;
 
-            const float f = 170f;
             if (Random.value > 0.5f)
             {
                 if (Random.value > 0.5f)
                 {
-                    x = -f;
-                    z = Random.Range(-f, f);
+                    x = -distance;
+                    z = Random.Range(-distance, distance);
                 }
                 else
                 {
-                    x = f;
-                    z = Random.Range(-f, f);
+                    x = distance;
+                    z = Random.Range(-distance, distance);
                 }
             }
             else
             {
                 if (Random.value > 0.5f)
                 {
-                    x = Random.Range(-f, f);
-                    z = -f;
+                    x = Random.Range(-distance, distance);
+                    z = -distance;
                 }
                 else
                 {
-                    x = Random.Range(-f, f);
-                    z = -f;
+                    x = Random.Range(-distance, distance);
+                    z = -distance;
                 }
             }
 
@@ -111,6 +110,14 @@ namespace Enemy
             foreach (var smallEnemy in _smallEnemies)
             {
                 smallEnemy.ResetForGame();
+            }
+
+            for (var i = 1; i <= 3; i++)
+            {
+                var smallEnemy = _smallEnemies[i];
+                var spawnPosition = GetSpawnPosition(60f * i);
+                smallEnemy.transform.position = spawnPosition;
+                smallEnemy.Spawn();
             }
 
             foreach (var mediumEnemy in _mediumEnemies)

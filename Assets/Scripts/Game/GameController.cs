@@ -34,6 +34,11 @@ namespace Game
             _stopwatch.Restart();
         }
 
+        private void Update()
+        {
+            CurrentLifetime = _stopwatch.Elapsed;
+        }
+
         public void GameOver()
         {
             _stopwatch.Stop();

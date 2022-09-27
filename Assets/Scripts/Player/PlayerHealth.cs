@@ -22,12 +22,14 @@ namespace Player
             if (_shields - damage > 0)
             {
                 _shields -= damage;
+                Shield.Instance.Flash();
             }
             else
             {
                 var diff = damage - _shields;
                 _health -= diff;
                 _shields = 0;
+                Shield.Instance.Flash();
             }
 
             if (_health <= 0)
